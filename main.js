@@ -1,10 +1,12 @@
 let spendings;
 let monthlySpendingHistory;
 let startingBalance;
+let currentMonthTotal;
 
 fetchExpensesData().then(() => {
   displayCurrentBalance();
   displayTotalSpentThisMonth();
+  displayDeviationFromLastMonth();
 });
 
 async function fetchExpensesData() {
@@ -13,6 +15,7 @@ async function fetchExpensesData() {
   startingBalance = expensesData['starting_balance'];
   spendings = expensesData['spendings'];
   monthlySpendingHistory = expensesData['monthly_spending_history_in_reverse_order'];
+  currentMonthTotal = monthlySpendingHistory[0];
 }
 
 function displayCurrentBalance() {
@@ -22,7 +25,14 @@ function displayCurrentBalance() {
 }
 
 function displayTotalSpentThisMonth() {
-  const currentMonthTotal = monthlySpendingHistory[0];
   const el = document.querySelector('.total-spent-this-month');
   el.textContent = `$${currentMonthTotal}`;
+}
+
+function displayDeviationFromLastMonth() {
+  const lastMonthTotal = monthlySpendingHistory[1];
+  const deviation = (currentMonthTotal - lastMonthTotal) / lastMonthTotal;
+  const el = document.querySelector('.deviation-from-last-month');
+  const sign = deviation >= 0 ? '+' : '-';
+  el.textContent = `${sign} ${Number.parseFloat(deviation * 100).toFixed(1)}%`;
 }
