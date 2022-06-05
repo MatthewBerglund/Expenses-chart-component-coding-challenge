@@ -2,7 +2,10 @@ let spendings;
 let monthlySpendingHistory;
 let startingBalance;
 
-fetchExpensesData().then(() => displayCurrentBalance());
+fetchExpensesData().then(() => {
+  displayCurrentBalance();
+  displayTotalSpentThisMonth();
+});
 
 async function fetchExpensesData() {
   const response = await fetch('matt-coding-challenge-data.json');
@@ -14,6 +17,12 @@ async function fetchExpensesData() {
 
 function displayCurrentBalance() {
   const totalSpent = monthlySpendingHistory.reduce((sum, currentAmount) => sum + currentAmount);
-  const currentBalanceSpan = document.querySelector('.current-balance');
-  currentBalanceSpan.textContent = startingBalance - totalSpent;
+  const el = document.querySelector('.current-balance');
+  el.textContent = `$${startingBalance - totalSpent}`;
+}
+
+function displayTotalSpentThisMonth() {
+  const currentMonthTotal = monthlySpendingHistory[0];
+  const el = document.querySelector('.total-spent-this-month');
+  el.textContent = `$${currentMonthTotal}`;
 }
