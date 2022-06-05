@@ -31,8 +31,14 @@ function displayTotalSpentThisMonth() {
 
 function displayDeviationFromLastMonth() {
   const lastMonthTotal = monthlySpendingHistory[1];
-  const deviation = (currentMonthTotal - lastMonthTotal) / lastMonthTotal;
+  const deviation = ((currentMonthTotal - lastMonthTotal) / lastMonthTotal) * 100;
   const el = document.querySelector('.deviation-from-last-month');
   const sign = deviation >= 0 ? '+' : '-';
-  el.textContent = `${sign} ${Number.parseFloat(deviation * 100).toFixed(1)}%`;
+  el.textContent = `${sign} ${Number.parseFloat(deviation).toFixed(1)}%`;
+}
+
+function getWeekday(dateString) {
+  const weekdayFormat = new Intl.DateTimeFormat('en', { weekday: 'short' });
+  const date = new Date(dateString);
+  return weekdayFormat.format(date).toLowerCase();
 }
