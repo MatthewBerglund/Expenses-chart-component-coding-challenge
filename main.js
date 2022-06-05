@@ -7,6 +7,7 @@ fetchExpensesData().then(() => {
   displayCurrentBalance();
   displayTotalSpentThisMonth();
   displayDeviationFromLastMonth();
+  displayWeekdays();
 });
 
 async function fetchExpensesData() {
@@ -41,4 +42,10 @@ function getWeekday(dateString) {
   const weekdayFormat = new Intl.DateTimeFormat('en', { weekday: 'short' });
   const date = new Date(dateString);
   return weekdayFormat.format(date).toLowerCase();
+}
+
+function displayWeekdays() {
+  const dates = Object.keys(spendings);
+  const weekdays = dates.map((date) => `<li>${getWeekday(date)}</li>`);
+  document.querySelector('.weekdays').innerHTML = weekdays.toString().replaceAll(',', ' ');
 }
