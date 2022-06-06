@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.bar-chart-container {
+  border: 1px solid black;
+  height: 200px;
+  width: 500px;
+}
+
+.bar-chart {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  column-gap: 10px;
+  list-style: none;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.bar-container {
+  display: flex;
+  align-items: end;
+}
+
+.bar {
+  background-color: #ec745c;
+  height: 100%;
+  width: 100%;
+}
+
+.spending {
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+}
+
+.weekday-container {
+  display: flex;
+  justify-content: center;
+}

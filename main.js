@@ -7,7 +7,7 @@ fetchExpensesData().then(() => {
   displayCurrentBalance();
   displayTotalSpentThisMonth();
   displayDeviationFromLastMonth();
-  displayWeekdays();
+  renderBarChart();
 });
 
 async function fetchExpensesData() {
@@ -44,8 +44,25 @@ function getWeekday(dateString) {
   return weekdayFormat.format(date).toLowerCase();
 }
 
-function displayWeekdays() {
-  const dates = Object.keys(spendings);
-  const weekdays = dates.map((date) => `<li>${getWeekday(date)}</li>`);
-  document.querySelector('.weekdays').innerHTML = weekdays.toString().replaceAll(',', ' ');
+function renderBarChart() {
+  const spendingEntries = Object.entries(spendings);
+  const maxSpending = Math.max(...Object.values(spendings));
+  spendingEntries.forEach((spending) => {
+    const html = getSpendingHTML(spending, maxSpending);
+    document.querySelector('.bar-chart').appendChild(html);
+  });
+}
+
+function getSpendingHTML(spending, maxSpending) {
+  const [date, amount] = spending;
+  const spendingTemplate = document.querySelector('template');
+  const spendingHTML = spendingTemplate.content.cloneNode(true);
+
+  const bar = spendingHTML.querySelector('.bar');
+  bar.style.height = `${(amount / maxSpending) * 100}%`;
+
+  const weekday = spendingHTML.querySelector('.weekday');
+  weekday.textContent = getWeekday(date);
+
+  return spendingHTML;
 }

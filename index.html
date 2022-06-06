@@ -14,15 +14,25 @@
     <p>My balance</p>
     <p class="current-balance"></p>
   </div>
-  <div>
-    <ul class="weekdays"></ul>
+  <div class="bar-chart-container">
+    <ul class="bar-chart"></ul>
+    <template id="spending-template">
+      <li class="spending">
+        <div class="bar-container">
+          <div class="bar"></div>
+        </div>
+        <div class="weekday-container">
+          <span class="weekday"></span>
+        </div>
+      </li>
+    </template>
   </div>
   <div>
     <p>Total this month</p>
     <p class="total-spent-this-month"></p>
   </div>
   <div>
-    <p class="deviation-from-last-month">Total this month</p>
+    <p class="deviation-from-last-month"></p>
     <p>from last month</p>
   </div>
   <script src="/main.js"></script>
