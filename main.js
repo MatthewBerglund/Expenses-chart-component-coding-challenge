@@ -1,3 +1,4 @@
+const currentDay = '2022-06-01';
 let spendings;
 let monthlySpendingHistory;
 let startingBalance;
@@ -65,6 +66,10 @@ function getSpendingHTML(spending, maxSpending) {
   bar.style.height = `${(amount / maxSpending) * 100}%`;
   bar.addEventListener('pointerenter', () => (tooltip.style.display = 'flex'));
   bar.addEventListener('pointerleave', () => (tooltip.style.display = 'none'));
+
+  if (date === currentDay) {
+    bar.classList.add('current-day');
+  }
 
   const weekday = spendingHTML.querySelector('.weekday');
   weekday.textContent = getWeekday(date);

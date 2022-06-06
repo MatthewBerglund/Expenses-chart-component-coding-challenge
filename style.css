@@ -76,6 +76,10 @@ main {
   width: 100%;
 }
 
+.current-day {
+  background-color: #75b4bc;
+}
+
 .bar:hover {
   cursor: pointer;
 }
