@@ -1,20 +1,65 @@
+/* background color: #f7e9dc */
+/* balance color: #ec745c */
+/* current date color: #75b4bc */
+/* spending chart color: #fffcf7 */
+/* dark text color: #392416 */
+
+html {
+  font-family: sans-serif;
+  font-size: 12px;
+}
+
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-.bar-chart-container {
-  /* border: 1px solid black; */
+main {
+  background-color: #f7e9dc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.component {
+  width: 400px;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  row-gap: 15px;
+}
+
+.balance {
+  color: #fffcf7;
+  background-color: #ec745c;
+  padding: 15px 25px;
+}
+
+.current-balance {
+  font-size: 2.5rem;
+  margin-top: 10px;
+}
+
+.main {
+  background-color: #fffcf7;
+  padding: 25px 25px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  row-gap: 30px;
+}
+
+.spendings-breakdown {
+  background-color: #fffcf7;
   height: 200px;
-  width: 500px;
+  margin: 50px 0 0 0;
 }
 
 .bar-chart {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  column-gap: 10px;
+  column-gap: 15px;
   list-style: none;
-  padding: 0;
   height: 100%;
   width: 100%;
 }
@@ -25,6 +70,7 @@
 }
 
 .bar {
+  position: relative;
   background-color: #ec745c;
   height: 100%;
   width: 100%;
@@ -39,21 +85,43 @@
   grid-template-rows: 2fr 1fr;
 }
 
-.weekday-container {
-  display: flex;
-  justify-content: center;
-}
-
 .spending-tooltip {
-  position: relative;
+  position: absolute;
   top: -27px;
   left: 50%;
   transform: translateX(-50%);
   display: none;
   justify-content: center;
   align-items: center;
-  background-color: #000000;
-  color: #ffffff;
+  background-color: #392416;
+  color: #fffcf7;
   padding: 3px 2px;
   width: fit-content;
+}
+
+.weekday-container {
+  display: flex;
+  justify-content: center;
+}
+
+/* SUMMARY */
+
+.summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.total-spent-this-month {
+  font-size: 3rem;
+}
+
+.deviation {
+  display: flex;
+  justify-content: end;
+  flex-direction: column;
+  align-items: end;
+}
+
+.deviation-from-last-month {
+  font-weight: bold;
 }

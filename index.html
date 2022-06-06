@@ -10,33 +10,42 @@
 </head>
 
 <body>
-  <div>
-    <p>My balance</p>
-    <p class="current-balance"></p>
-  </div>
-  <div class="bar-chart-container">
-    <ul class="bar-chart"></ul>
-    <template id="spending-template">
-      <li class="spending">
-        <div class="bar-container">
-          <div class="bar">
-            <span class="spending-tooltip"></span>
+  <main>
+    <div class="component">
+      <section class="balance">
+        <p>My balance</p>
+        <p class="current-balance"></p>
+      </section>
+      <section class="main">
+        <h1>Spending — Last 7 days</h1>
+        <div class="spendings-breakdown">
+          <ul class="bar-chart"></ul>
+          <template id="spending-template">
+            <li class="spending">
+              <div class="bar-container">
+                <div class="bar">
+                  <span class="spending-tooltip"></span>
+                </div>
+              </div>
+              <div class="weekday-container">
+                <span class="weekday"></span>
+              </div>
+            </li>
+          </template>
+        </div>
+        <div class="summary">
+          <div class="month-total">
+            <p>Total this month</p>
+            <p class="total-spent-this-month"></p>
+          </div>
+          <div class="deviation">
+            <p class="deviation-from-last-month"></p>
+            <p>from last month</p>
           </div>
         </div>
-        <div class="weekday-container">
-          <span class="weekday"></span>
-        </div>
-      </li>
-    </template>
-  </div>
-  <div>
-    <p>Total this month</p>
-    <p class="total-spent-this-month"></p>
-  </div>
-  <div>
-    <p class="deviation-from-last-month"></p>
-    <p>from last month</p>
-  </div>
+      </section>
+    </div>
+  </main>
   <script src="/main.js"></script>
 </body>
 
