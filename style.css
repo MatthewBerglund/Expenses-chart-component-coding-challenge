@@ -4,7 +4,7 @@
 }
 
 .bar-chart-container {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   height: 200px;
   width: 500px;
 }
@@ -30,6 +30,10 @@
   width: 100%;
 }
 
+.bar:hover {
+  cursor: pointer;
+}
+
 .spending {
   display: grid;
   grid-template-rows: 2fr 1fr;
@@ -38,4 +42,18 @@
 .weekday-container {
   display: flex;
   justify-content: center;
+}
+
+.spending-tooltip {
+  position: relative;
+  top: -27px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000;
+  color: #ffffff;
+  padding: 3px 2px;
+  width: fit-content;
 }

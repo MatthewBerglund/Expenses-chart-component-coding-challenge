@@ -58,8 +58,13 @@ function getSpendingHTML(spending, maxSpending) {
   const spendingTemplate = document.querySelector('template');
   const spendingHTML = spendingTemplate.content.cloneNode(true);
 
+  const tooltip = spendingHTML.querySelector('.spending-tooltip');
+  tooltip.innerText = `$${amount.toFixed(2)}`;
+
   const bar = spendingHTML.querySelector('.bar');
   bar.style.height = `${(amount / maxSpending) * 100}%`;
+  bar.addEventListener('pointerenter', () => (tooltip.style.display = 'flex'));
+  bar.addEventListener('pointerleave', () => (tooltip.style.display = 'none'));
 
   const weekday = spendingHTML.querySelector('.weekday');
   weekday.textContent = getWeekday(date);
