@@ -15,6 +15,10 @@ html {
   box-sizing: border-box;
 }
 
+h1 {
+  font-size: 2rem;
+}
+
 main {
   background-color: #f7e9dc;
   display: flex;
@@ -33,7 +37,8 @@ main {
 .balance {
   color: #fffcf7;
   background-color: #ec745c;
-  padding: 15px 25px;
+  border-radius: 15px;
+  padding: 20px 30px;
 }
 
 .current-balance {
@@ -42,17 +47,19 @@ main {
 }
 
 .main {
+  color: #392416;
   background-color: #fffcf7;
-  padding: 25px 25px;
+  border-radius: 15px;
+  padding: 25px 30px;
   display: grid;
   grid-template-rows: auto 1fr auto;
-  row-gap: 30px;
+  row-gap: 40px;
 }
 
 .spendings-breakdown {
   background-color: #fffcf7;
-  height: 200px;
-  margin: 50px 0 0 0;
+  height: 180px;
+  margin: 15px 0 0 0;
 }
 
 .bar-chart {
@@ -62,6 +69,7 @@ main {
   list-style: none;
   height: 100%;
   width: 100%;
+  border-bottom: 1px solid #9d9a93;
 }
 
 .bar-container {
@@ -74,6 +82,7 @@ main {
   background-color: #ec745c;
   height: 100%;
   width: 100%;
+  border-radius: 2px;
 }
 
 .bar:hover {
@@ -96,7 +105,7 @@ main {
 
 .spending-tooltip {
   position: absolute;
-  top: -27px;
+  top: -30px;
   left: 50%;
   transform: translateX(-50%);
   display: none;
@@ -104,24 +113,32 @@ main {
   align-items: center;
   background-color: #392416;
   color: #fffcf7;
-  padding: 3px 2px;
+  padding: 5px 4px;
   width: fit-content;
+  border-radius: 3px;
 }
 
 .weekday-container {
+  color: #9d9a93;
   display: flex;
   justify-content: center;
+  padding-top: 7px;
 }
 
 /* SUMMARY */
 
 .summary {
+  color: #9d9a93;
+  font-size: 1.2rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
 
 .total-spent-this-month {
+  color: #392416;
   font-size: 3rem;
+  font-weight: 600;
+  margin: 5px 0 0 0;
 }
 
 .deviation {
@@ -132,5 +149,8 @@ main {
 }
 
 .deviation-from-last-month {
-  font-weight: bold;
+  color: #392416;
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin: 0 0 5px 0;
 }
