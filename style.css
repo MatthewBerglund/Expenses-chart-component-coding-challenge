@@ -1,47 +1,47 @@
-/* background color: #f7e9dc */
-/* balance color: #ec745c */
-/* current date color: #75b4bc */
-/* spending chart color: #fffcf7 */
-/* dark text color: #392416 */
-
+/* General styles */
 html {
   font-family: sans-serif;
   font-size: 12px;
 }
 
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 h1 {
   font-size: 2rem;
+  margin-bottom: 4.5rem;
 }
 
 main {
+  align-items: center;
   background-color: #f7e9dc;
   display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
+  justify-content: center;
 }
 
+/* Basic component styles */
 .component {
-  width: 400px;
   display: grid;
   grid-template-rows: auto 1fr;
+  max-width: 90vw;
   row-gap: 15px;
+  width: 400px;
 }
 
+/* Balance section styles */
 .balance {
-  color: #fffcf7;
+  align-items: center;
   background-color: #ec745c;
   border-radius: 15px;
-  padding: 20px 30px;
+  color: #fffcf7;
   display: flex;
+  font-size: 1.2rem;
   justify-content: space-between;
-  align-items: center;
+  padding: 20px 30px;
 }
 
 .current-balance {
@@ -49,48 +49,66 @@ main {
   margin-top: 10px;
 }
 
-.main {
-  color: #392416;
-  background-color: #fffcf7;
-  border-radius: 15px;
-  padding: 30px 30px;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  row-gap: 37px;
+.circle-left {
+  border-radius: 63px;
+  border: 2px solid #fffcf7;
+  height: 3.5rem;
+  position: relative;
+  transform: translateX(-50%);
+  width: 3.5rem;
 }
 
+.circle-right {
+  background-color: #392416;
+  border-radius: 63px;
+  height: 3.5rem;
+  position: relative;
+  width: 3.5rem;
+}
+
+/* Main component section styles */
+.main {
+  background-color: #fffcf7;
+  border-radius: 15px;
+  color: #392416;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: 30px 30px;
+}
+
+/* Spendings/bar chart styles */
 .spendings-breakdown {
   background-color: #fffcf7;
-  height: 160px;
-  margin: 15px 0 0 0;
+  border-bottom: 2px solid #f7e9dc;
+  height: 170px;
+  padding-bottom: 2.25rem;
 }
 
 .bar-chart {
+  column-gap: 15px;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  column-gap: 15px;
-  list-style: none;
   height: 100%;
+  list-style: none;
   width: 100%;
-  border-bottom: 1px solid #f7e9dc;
 }
 
 .bar-container {
-  display: flex;
   align-items: end;
+  display: flex;
 }
 
 .bar {
-  position: relative;
   background-color: #ec745c;
+  border-radius: 3px;
   height: 100%;
+  position: relative;
   width: 100%;
-  border-radius: 2px;
 }
 
 .bar:hover {
-  cursor: pointer;
   background-color: #ff9b87;
+  cursor: pointer;
 }
 
 .current-day {
@@ -103,22 +121,22 @@ main {
 
 .spending {
   display: grid;
-  grid-template-rows: 2fr 1fr;
+  grid-template-rows: 2fr auto;
 }
 
 .spending-tooltip {
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: none;
-  justify-content: center;
   align-items: center;
   background-color: #392416;
-  color: #fffcf7;
-  padding: 5px 4px;
-  width: fit-content;
   border-radius: 3px;
+  color: #fffcf7;
+  display: none;
+  justify-content: center;
+  left: 50%;
+  padding: 5px 4px;
+  position: absolute;
+  top: -30px;
+  transform: translateX(-50%);
+  width: fit-content;
 }
 
 .weekday-container {
@@ -128,13 +146,13 @@ main {
   padding-top: 7px;
 }
 
-/* SUMMARY */
-
+/* Summary section styles */
 .summary {
   color: #9d9a93;
-  font-size: 1.2rem;
   display: grid;
+  font-size: 1.2rem;
   grid-template-columns: 1fr 1fr;
+  margin-top: 2.25rem;
 }
 
 .total-spent-this-month {
@@ -145,35 +163,28 @@ main {
 }
 
 .deviation {
-  display: flex;
-  justify-content: end;
-  flex-direction: column;
   align-items: end;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
   padding-bottom: 5px;
 }
 
 .deviation-from-last-month {
   color: #392416;
-  font-weight: 600;
   font-size: 1.2rem;
+  font-weight: 600;
   margin: 0 0 5px 0;
 }
 
-/* Circle Icon */
+/* Mobile styles */
+@media screen and (max-width: 576px) {
+  html {
+    font-size: 15px;
+  }
 
-.circle-left {
-  position: relative;
-  border: 2px solid #fffcf7;
-  border-radius: 63px;
-  height: 35px;
-  width: 35px;
-  transform: translateX(-50%);
-}
-
-.circle-right {
-  position: relative;
-  border-radius: 63px;
-  height: 35px;
-  width: 35px;
-  background-color: #392416;
+  .spendings-breakdown {
+    border-bottom: 3px solid #f7e9dc;
+    height: 30vh;
+  }
 }
