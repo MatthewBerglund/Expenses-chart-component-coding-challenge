@@ -39,6 +39,9 @@ main {
   background-color: #ec745c;
   border-radius: 15px;
   padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .current-balance {
@@ -50,15 +53,15 @@ main {
   color: #392416;
   background-color: #fffcf7;
   border-radius: 15px;
-  padding: 25px 30px;
+  padding: 30px 30px;
   display: grid;
   grid-template-rows: auto 1fr auto;
-  row-gap: 40px;
+  row-gap: 37px;
 }
 
 .spendings-breakdown {
   background-color: #fffcf7;
-  height: 180px;
+  height: 160px;
   margin: 15px 0 0 0;
 }
 
@@ -69,7 +72,7 @@ main {
   list-style: none;
   height: 100%;
   width: 100%;
-  border-bottom: 1px solid #9d9a93;
+  border-bottom: 1px solid #f7e9dc;
 }
 
 .bar-container {
@@ -146,6 +149,7 @@ main {
   justify-content: end;
   flex-direction: column;
   align-items: end;
+  padding-bottom: 5px;
 }
 
 .deviation-from-last-month {
@@ -153,4 +157,23 @@ main {
   font-weight: 600;
   font-size: 1.2rem;
   margin: 0 0 5px 0;
+}
+
+/* Circle Icon */
+
+.circle-left {
+  position: relative;
+  border: 2px solid #fffcf7;
+  border-radius: 63px;
+  height: 35px;
+  width: 35px;
+  transform: translateX(-50%);
+}
+
+.circle-right {
+  position: relative;
+  border-radius: 63px;
+  height: 35px;
+  width: 35px;
+  background-color: #392416;
 }
