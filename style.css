@@ -51,7 +51,7 @@ main {
 
 .circle-left {
   border-radius: 63px;
-  border: 2px solid #fffcf7;
+  border: 0.2rem solid #fffcf7;
   height: 3.5rem;
   position: relative;
   transform: translateX(-50%);
@@ -168,6 +168,7 @@ main {
   flex-direction: column;
   justify-content: end;
   padding-bottom: 5px;
+  text-align: right;
 }
 
 .deviation-from-last-month {
@@ -186,5 +187,23 @@ main {
   .spendings-breakdown {
     border-bottom: 3px solid #f7e9dc;
     height: 30vh;
+  }
+
+  .bar-chart {
+    column-gap: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .component {
+    max-width: 100vw;
+  }
+
+  .balance {
+    border-radius: 0;
+  }
+
+  .main {
+    border-radius: 0;
   }
 }
