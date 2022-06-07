@@ -3,7 +3,7 @@
 ![Desktop version of the app](/assets/images/screenshot_desktop.png)
 
 ## Brief
-Your challenge is to build out this bar chart component. 
+Your challenge is to build out [this bar chart component](https://www.frontendmentor.io/challenges/expenses-chart-component-e7yJBUdjwt).
 
 ### Your users should be able to:
 
