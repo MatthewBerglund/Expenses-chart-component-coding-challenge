@@ -1,15 +1,10 @@
-const currentDay = '2022-06-01';
 let spendings;
 let monthlySpendingHistory;
 let startingBalance;
-let currentMonthTotal;
 
-fetchExpensesData().then(() => {
-  displayCurrentBalance();
-  displayTotalSpentThisMonth();
-  displayDeviationFromLastMonth();
-  renderBarChart();
-});
+const currentDay = '2022-06-01';
+
+fetchExpensesData().then(() => render());
 
 async function fetchExpensesData() {
   const response = await fetch('matt-coding-challenge-data.json');
@@ -17,41 +12,12 @@ async function fetchExpensesData() {
   startingBalance = expensesData['starting_balance'];
   spendings = expensesData['spendings'];
   monthlySpendingHistory = expensesData['monthly_spending_history_in_reverse_order'];
-  currentMonthTotal = monthlySpendingHistory[0];
 }
 
-function displayCurrentBalance() {
-  const totalSpent = monthlySpendingHistory.reduce((sum, currentAmount) => sum + currentAmount);
-  const el = document.querySelector('.current-balance');
-  el.textContent = `$${startingBalance - totalSpent}`;
-}
-
-function displayTotalSpentThisMonth() {
-  const el = document.querySelector('.total-spent-this-month');
-  el.textContent = `$${currentMonthTotal}`;
-}
-
-function displayDeviationFromLastMonth() {
-  const lastMonthTotal = monthlySpendingHistory[1];
-  const deviation = ((currentMonthTotal - lastMonthTotal) / lastMonthTotal) * 100;
-  const el = document.querySelector('.deviation-from-last-month');
+function getDeviation(amount, controlAmount) {
+  const deviation = ((amount - controlAmount) / controlAmount) * 100;
   const sign = deviation >= 0 ? '+' : '-';
-  el.textContent = `${sign}${Number.parseFloat(deviation).toFixed(1)}%`;
-}
-
-function getWeekday(dateString) {
-  const weekdayFormat = new Intl.DateTimeFormat('en', { weekday: 'short' });
-  const date = new Date(dateString);
-  return weekdayFormat.format(date).toLowerCase();
-}
-
-function renderBarChart() {
-  const spendingEntries = Object.entries(spendings);
-  const maxSpending = Math.max(...Object.values(spendings));
-  spendingEntries.forEach((spending) => {
-    const html = getSpendingHTML(spending, maxSpending);
-    document.querySelector('.bar-chart').appendChild(html);
-  });
+  return [Number.parseFloat(deviation).toFixed(1), sign];
 }
 
 function getSpendingHTML(spending, maxSpending) {
@@ -75,4 +41,31 @@ function getSpendingHTML(spending, maxSpending) {
   weekday.textContent = getWeekday(date);
 
   return spendingHTML;
+}
+
+function getWeekday(dateString) {
+  const weekdayFormat = new Intl.DateTimeFormat('en', { weekday: 'short' });
+  const date = new Date(dateString);
+  return weekdayFormat.format(date).toLowerCase();
+}
+
+function render() {
+  const totalSpent = monthlySpendingHistory.reduce((sum, currentAmount) => sum + currentAmount);
+  const currentMonthTotal = monthlySpendingHistory[0];
+  const lastMonthTotal = monthlySpendingHistory[1];
+  const [deviation, sign] = getDeviation(currentMonthTotal, lastMonthTotal);
+
+  document.querySelector('.current-balance').textContent = `$${startingBalance - totalSpent}`;
+  document.querySelector('.total-spent-this-month').textContent = `$${currentMonthTotal}`;
+  document.querySelector('.deviation-from-last-month').textContent = `${sign}${deviation}%`;
+  renderBarChart();
+}
+
+function renderBarChart() {
+  const spendingEntries = Object.entries(spendings);
+  const maxSpending = Math.max(...Object.values(spendings));
+  spendingEntries.forEach((spending) => {
+    const html = getSpendingHTML(spending, maxSpending);
+    document.querySelector('.bar-chart').appendChild(html);
+  });
 }
