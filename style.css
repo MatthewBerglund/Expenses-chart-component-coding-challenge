@@ -76,12 +76,17 @@ main {
   width: 100%;
 }
 
+.bar:hover {
+  cursor: pointer;
+  background-color: #ff9b87;
+}
+
 .current-day {
   background-color: #75b4bc;
 }
 
-.bar:hover {
-  cursor: pointer;
+.current-day:hover {
+  background-color: #b4dfe5;
 }
 
 .spending {
